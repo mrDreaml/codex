@@ -19,7 +19,7 @@ const tryToParseInt = value => {
 
 const getDataFromFile = filePath => {
     const inputFile = fs.readFileSync(filePath, 'utf8')
-    const lines = inputFile.split('\n')
+    const lines = inputFile.split('\n').map(l => l.trim()).filter(l => l !== '')
     return lines.map(line => {
         const regExp = searchRegExp(line)
         if (regExp) {
