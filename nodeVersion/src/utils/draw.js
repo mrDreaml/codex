@@ -32,19 +32,20 @@ const drawRectangle = canvas => ({ x0, y0, x1, y1 }) => {
 
 const fillBucket = canvas => {
     const checkIsCanvasHasPoint = checkIsCanvasHasPointConstructor(canvas)
-    const recursiveFill = ({ x, y, c }) => {
-        if (checkIsCanvasHasPoint({ x, y })) {
-            const point = canvas[y][x]
-            if (point === ' ') {
+    return (initialDot) => {
+        let q = [initialDot]
+        while (q.length) {
+            const { x, y, c } = q[0]
+            if (checkIsCanvasHasPoint({ x, y }) && canvas[y][x] === ' ') {
                 canvas[y][x] = c
-                recursiveFill({ x: x + 1, y, c })
-                recursiveFill({ x: x - 1, y, c })
-                recursiveFill({ x, y: y + 1, c })
-                recursiveFill({ x, y: y - 1, c })
+                q.push({ x: x + 1, y, c })
+                q.push({ x: x - 1, y, c })
+                q.push({ x, y: y + 1, c })
+                q.push({ x, y: y - 1, c })
             }
+            q.shift()
         }
     }
-    return recursiveFill
 }
 
 const withBorders = (canvas) => {
