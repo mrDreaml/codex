@@ -46,19 +46,6 @@ const fillBucket = canvas => {
             q.shift()
         }
     }
-    // const recursiveFill = ({ x, y, c }) => {
-    //     if (checkIsCanvasHasPoint({ x, y })) {
-    //         const point = canvas[y][x]
-    //         if (point === ' ') {
-    //             canvas[y][x] = c
-    //             recursiveFill({ x: x + 1, y, c })
-    //             recursiveFill({ x: x - 1, y, c })
-    //             recursiveFill({ x, y: y + 1, c })
-    //             recursiveFill({ x, y: y - 1, c })
-    //         }
-    //     }
-    // }
-    // return recursiveFill
 }
 
 const withBorders = (canvas) => {
